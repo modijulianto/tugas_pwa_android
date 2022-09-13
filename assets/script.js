@@ -126,6 +126,8 @@ const title_form = document.getElementById("title-form");
 
 btn_add.addEventListener("click", (event) => {
     document.getElementById("form").reset();
+    document.getElementById("index").value = "";
+    document.getElementById("id").value = "";
     form_input.style.display = "block";
     title_form.innerHTML = "Add New Data";
 });
