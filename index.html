@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        a.active {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light mb-5">
+        <div class="container">
+            <a class="navbar-brand text-danger" href="#">SPORT STORE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#beranda" id="beranda" onclick="switchPage('beranda')">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#admin" id="admin" onclick="switchPage('admin')">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="beranda-page">
+        <div class="container mb-5">
+            <form id="search">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="keyword" autocomplete="off" placeholder="search product">
+                            <label for="keyword">Search</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <select class="form-select" id="sort" aria-label="Floating label select example">
+                                <option selected>-- Select --</option>
+                                <option value="asc">A-Z</option>
+                                <option value="desc">Z-A</option>
+                                <option value="cheap">Harga terendah</option>
+                                <option value="expensive">Harga tertinggi</option>
+                            </select>
+                            <label for="sort">Sort</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <label for="sort" class="form-label"></label>
+                        <button type="button" class="btn btn-primary" onclick="filterProducts()">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Products</h2>
+            <div class="row" id="list-product">
+
+            </div>
+        </div>
+    </div>
+    <div id="admin-page">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary" id="btn-add">
+                        Add Product
+                    </button>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-product">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col" id="form-input" style="display: none;">
+                    <h2 id="title-form">Add Data</h2>
+                    <form id="form">
+                        <div class="modal-body">
+                            <input type="hidden" name="index" id="index">
+                            <span class="text-danger validate-index"></span>
+                            <input type="hidden" name="id" id="id">
+                            <span class="text-danger validate-id"></span>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                                <span class="text-danger validate-name"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="price" name="price">
+                                <span class="text-danger validate-price"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                <span class="text-danger validate-description"></span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="close_form()">Close</button>
+                        <input type="reset" type="button" class="btn btn-warning mr-2">
+                        <button type="button" class="btn btn-primary" onclick="save()">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
